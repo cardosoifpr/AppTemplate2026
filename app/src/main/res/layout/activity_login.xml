@@ -94,9 +94,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_marginBaseline="130dp"
         app:srcCompat="@mipmap/ic_brechofl"
-        app:layout_editor_absoluteX="157dp"
-        app:layout_editor_absoluteY="146dp" />
+        android:layout_marginTop="130dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
