@@ -59,10 +59,7 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
 
         val view = root
         itemImageView = view.findViewById(R.id.image_item)
@@ -124,7 +121,7 @@ class DashboardFragment : Fragment() {
                 val descricao = descricaoEditText.text.toString().trim()
                 //TODO("Capture aqui o conteudo que esta nos outros editTexts que foram criados")
 
-                val item = Item(endereco,descricao, base64Image=base64Image)
+                val item = Item(endereco, descricao, base64Image=base64Image)
 
                 saveItemIntoDatabase(item)
             }
