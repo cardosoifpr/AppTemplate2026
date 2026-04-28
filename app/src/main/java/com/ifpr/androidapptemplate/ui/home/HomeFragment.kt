@@ -53,8 +53,6 @@ class HomeFragment : Fragment() {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -146,9 +144,8 @@ class HomeFragment : Fragment() {
         }
 
         locationRequest = LocationRequest.create().apply {
-            interval = 30000 // Intervalo em milissegundos para atualizacoes de localizacao
-            fastestInterval =
-                30000 // O menor intervalo de tempo para receber atualizacoes de localizacao
+            interval = 30000
+            fastestInterval = 30000
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         }
 
@@ -192,11 +189,40 @@ class HomeFragment : Fragment() {
                             .inflate(R.layout.item_template, container, false)
 
                         val imageView = itemView.findViewById<ImageView>(R.id.item_image)
+                        val nomeView = itemView.findViewById<TextView>(R.id.item_nome)
                         val enderecoView = itemView.findViewById<TextView>(R.id.item_endereco)
                         val descricaoView = itemView.findViewById<TextView>(R.id.item_descricao)
 
+                        // ✅ BOTÃO ADICIONADO (NÃO ALTERA NADA EXISTENTE)
+                        val btnRota = itemView.findViewById<Button>(R.id.btnRota)
+
+                        nomeView.text = "Nome: ${item.nome ?: "Não informado"}"
                         enderecoView.text = "Endereço: ${item.endereco ?: "Não informado"}"
                         descricaoView.text = "Descrição: ${item.descricao ?: "Não informado"}"
+
+                        // ✅ AÇÃO DO BOTÃO (ROTA)
+                        btnRota.setOnClickListener {
+
+                            val endereco = item.endereco
+
+                            if (!endereco.isNullOrEmpty()) {
+
+                                val uri = "google.navigation:q=${endereco}"
+                                val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
+
+                                intent.setPackage("com.google.android.apps.maps")
+                                intent.data = android.net.Uri.parse(uri)
+
+                                try {
+                                    container.context.startActivity(intent)
+                                } catch (e: Exception) {
+                                    Toast.makeText(container.context, "App de mapas não encontrado", Toast.LENGTH_SHORT).show()
+                                }
+
+                            } else {
+                                Toast.makeText(container.context, "Endereço inválido", Toast.LENGTH_SHORT).show()
+                            }
+                        }
 
                         if (!item.imageUrl.isNullOrEmpty()) {
                             Glide.with(container.context).load(item.imageUrl).into(imageView)

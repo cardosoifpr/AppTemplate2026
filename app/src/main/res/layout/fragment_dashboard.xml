@@ -43,12 +43,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_item" />
 
+    <EditText
+        android:id="@+id/nomeItemEditText"
+        android:layout_width="393dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:hint="Nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_select_image" />
 
     <EditText
         android:id="@+id/enderecoItemEditText"
         android:layout_width="393dp"
         android:layout_height="40dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="72dp"
         android:hint="Endereço"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,10 +67,10 @@
         android:id="@+id/descricaoItemEditText"
         android:layout_width="394dp"
         android:layout_height="42dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="132dp"
         android:hint="Descrição"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.294"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_select_image" />
 
@@ -69,7 +78,7 @@
         android:id="@+id/salvarItemButton"
         android:layout_width="387dp"
         android:layout_height="39dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="112dp"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
